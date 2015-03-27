@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<resources>
+
+
+    <string name="advice_light">你太瘦囉</string>
+
+
+    <string name="advice_average">體型不錯喔</string>
+
+
+    <string name="advice_heavy">你該減肥了</string>
+
+
+</resources>
