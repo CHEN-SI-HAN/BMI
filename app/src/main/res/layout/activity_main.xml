@@ -97,7 +97,7 @@
     <Button
 
 
-        android:id="@+id/buttonCalculate"
+        android:id="@+id/calcBMI"
 
 
         android:layout_width="fill_parent"

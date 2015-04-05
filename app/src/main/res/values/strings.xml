@@ -5,5 +5,9 @@
     <string name="bmi_height">身高 (cm)</string>
     <string name="bmi_weight">體重 (kg)</string>
     <string name="bmi_calculate">計算 BMI 值</string>
+    <string name="inputError">資料未輸入或輸入錯誤，請返回再輸入一次！！</string>
+    <string name="resultTitle">輸入資料如下：</string>
+    <string name="btnBack">返回</string>
+
     <string name="hello_world"></string>
 </resources>
