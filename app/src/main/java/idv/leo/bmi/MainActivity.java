@@ -7,10 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import java.text.DecimalFormat;
 
 
 
@@ -19,7 +16,7 @@ import java.text.DecimalFormat;
 public class MainActivity extends Activity {
     private EditText fieldheight;
     private EditText fieldweight;
-    private Button calcBMI;
+    private Button calcBMI , clear;
 
     @Override
 
@@ -51,6 +48,15 @@ public class MainActivity extends Activity {
 public void findViews() {
     fieldheight = (EditText) findViewById(R.id.inputHeight);
     fieldweight = (EditText) findViewById(R.id.inputWeight);
+    clear = (Button)findViewById(R.id.clear);
+    clear.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            //清除
+            fieldheight.setText("");
+            fieldweight.setText("");
+        }
+    });
     calcBMI = (Button) findViewById(R.id.calcBMI);
     calcBMI.setOnClickListener(new View.OnClickListener() {
         @Override
@@ -65,7 +71,7 @@ public void findViews() {
             try {
                 String height = fieldheight.getText().toString();
                 String weight = fieldweight.getText().toString();
-                DecimalFormat nf = new DecimalFormat("0.00");
+                //判斷字串是否為空值
                 if (height.isEmpty() || weight.isEmpty()) {
                     throw new Exception();
                 }
@@ -77,36 +83,17 @@ public void findViews() {
 
                 double BMI = weight1 / (height1 * height1);
 
-                TextView result = (TextView) findViewById(R.id.textResult);
 
-                result.setText("Your BMI is " + nf.format(BMI));
-
-                TextView fieldsuggest = (TextView) findViewById(R.id.textSuggest);
-
-                if (BMI > 25) {
-
-                    fieldsuggest.setText(R.string.advice_heavy);
-
-                } else if (BMI < 20) {
-
-                    fieldsuggest.setText(R.string.advice_light);
-
-                } else {
-
-                    fieldsuggest.setText(R.string.advice_average);
-
-                }
-
-
-                bundle.putDouble("height", height1);
-                bundle.putDouble("weight", weight1);
+                bundle.putDouble("BMI",BMI);
+                bundle.putString("height", height);
+                bundle.putString("weight", weight);
 
             } catch (Exception e) {
                 Toast.makeText(MainActivity.this, getString(R.string.inputError), Toast.LENGTH_SHORT).show();
                 return;
             }
-       //     intent.putExtras(bundle);
-        //    startActivity(intent);
+            intent.putExtras(bundle);
+            startActivity(intent);
 
 
         }
